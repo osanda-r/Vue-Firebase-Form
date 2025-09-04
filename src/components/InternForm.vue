@@ -55,7 +55,7 @@ const submit = async () => {
       role: role.value,
       dateJoined: formatDate(dateJoined.value),
     };
-    // Add a timeout to prevent infinite loading
+   
     timeoutId = setTimeout(() => {
       loading.value = false;
       snackbarText.value = "Request timed out.";
@@ -74,8 +74,7 @@ const submit = async () => {
   } catch (err) {
     clearTimeout(timeoutId);
     console.error("Firestore error:", err);
-    snackbarText.value =
-      "Failed to save. Check Firebase config, permissions, and network.";
+    snackbarText.value = "Failed to save.";
     snackbar.value = true;
   } finally {
     loading.value = false;
