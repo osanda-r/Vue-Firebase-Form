@@ -45,11 +45,9 @@ const submit = async () => {
   loading.value = true;
   let timeoutId;
   try {
-    // Defensive: check db
+    // Database check
     if (!db) {
-      throw new Error(
-        "Firebase DB not initialized. Check your firebase.js config."
-      );
+      throw new Error("DB not initialized.");
     }
     const payload = {
       name: name.value.trim(),
